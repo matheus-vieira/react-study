@@ -24,3 +24,15 @@ Then you are ok to start the application with gulp
 To test the API run
 
 ```gulp test```
+
+to run the front end access the path
+
+```cd src/front```
+
+Then install the dependencies
+
+`npm install`
+
+Then you are ok to start the application with gulp
+
+```npm start```
