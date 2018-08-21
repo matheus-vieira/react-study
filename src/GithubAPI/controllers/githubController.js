@@ -6,37 +6,36 @@ const githubController = function () {
 
     const GitHubAPIURL = 'https://api.github.com/users';
 
-    function makeCall(res, url, ClassObj) {
-        axios.get(url)
-            .then(r => !ClassObj ? r.data : r.data.map(u => new ClassObj(u)))
-            .then(r => res.send(r))
-            .catch(e => res.send(e));
+    async function makeCall(url, ClassObj) {
+        let r = await axios.get(url);
+
+        if (ClassObj) 
+            return r.data.map(u => new ClassObj(u));
+
+        return r.data;
     }
 
-    function getUsers(req, res) {
+    async function getUsers(since) {
         let url = GitHubAPIURL;
-
-        if (req.query && req.query.since)
-            url += '?since=' + req.query.since;
-
-        makeCall(res, url, User);
+        if (since) url += '?since=' + since;
+        return await makeCall(url, User);
     }
 
-    function getUserDetail(req, res) {
-        if (!req.params.username || !req.params.username)
-            return res.send("A username must be provided /api/users/:username/details");
-        makeCall(res, GitHubAPIURL + '/' + req.params.username);
+    async function getUserDetails(username) {
+        if (!username)
+            return 'An username must be provided';
+        return await makeCall(GitHubAPIURL + '/' + username);
     }
 
-    function getUserRepos(req, res) {
-        if (!req.params.username || !req.params.username)
-            return res.send("A username must be provided /api/users/:username/repos");
-        makeCall(res, GitHubAPIURL + '/' + req.params.username + '/repos', Repo);
+    async function getUserRepos(username) {
+        if (!username)
+            return 'An username must be provided';
+        return await makeCall(GitHubAPIURL + '/' + username + '/repos', Repo);
     }
 
     return {
         getUsers: getUsers,
-        getUserDetail: getUserDetail,
+        getUserDetails: getUserDetails,
         getUserRepos: getUserRepos
     }
 };
