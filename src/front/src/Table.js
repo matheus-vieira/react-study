@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
+import ModalDetails from './ModalDetails';
 
 const $ = require('jquery');
 $.DataTable = require('datatables.net-bs4');
@@ -13,14 +16,16 @@ const columns = [
     {
         title: 'Login',
         data: 'login'
-    },
-    {
-        title: 'Actions',
-        data: null,
-        render: function ( data, type, row ) {
-            return '<button type="button" class="btn btn-outline-primary">Primary</button>';
-        }
     }
+    // },
+    // {
+    //     title: 'Actions',
+    //     data: 'login',
+    //     render: function ( data, type, row, settings ) {
+    //         var x = new ModalDetails(row);
+    //         return ReactDOM.render(x, document.getElementById('root'));
+    //     }
+    // }
 ];
 
 function reloadTableData(names) {
