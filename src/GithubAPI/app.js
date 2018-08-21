@@ -1,5 +1,6 @@
+require('module-alias/register');
 const express = require('express');
-const githubRouter = require('./routes/githubRouter');
+const githubRouter = require('@routes/githubRouter');
 
 const app = express();
 
