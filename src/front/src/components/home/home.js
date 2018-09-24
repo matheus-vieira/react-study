@@ -11,8 +11,8 @@ const Home = () => (
         <h5 className="subtitle">About</h5>
         <Card>
           <div>
-            <p><b>Test</b></p>
-            <p>This is the test for Shaw and Partners</p>
+            <p><b>ReactJS</b></p>
+            <p>Learning ReactJS framework</p>
           </div>
         </Card>
         {/* <h5 className="subtitle">Experiences</h5> */}

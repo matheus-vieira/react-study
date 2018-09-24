@@ -1,13 +1,17 @@
-# shaw-partners-test
+# ReactJS Study
 
-Test for Shaw and Partners
+Just studying ReactJS Framework
 
 
 To start locally:
 
 First clone the repository
 
-`git clone https://github.com/matheus-vieira/shaw-partners-test`
+`git clone https://github.com/matheus-vieira/react-study`
+
+or
+
+`git clone git@github.com:matheus-vieira/react-study.git`
 
 For the API go to the location
 
